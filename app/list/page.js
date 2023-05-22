@@ -1,4 +1,5 @@
 import { connectDB } from "@/util/database";
+import Link from "next/link";
 
 export default async function List() {
   const db = (await connectDB).db("forum");
@@ -6,15 +7,14 @@ export default async function List() {
 
   return (
     <div className="list-bg">
-      {result.map((a, i) => {
-        console.log(a.title);
-        return (
-          <div className="list-item" key={i}>
-            <h4>{a.title}</h4>
-            <p>{a.content}</p>
-          </div>
-        );
-      })}
+      {result.map((a, i) => (
+        <div className="list-item" key={i}>
+          <Link href={`/detail/${a._id}`} className="title">
+            {a.title}
+          </Link>
+          <p>{a.content}</p>
+        </div>
+      ))}
     </div>
   );
 }
