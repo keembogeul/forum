@@ -1,3 +1,4 @@
+// @ : 경로 별칭 (jsconfig.json에서 설정)
 import { connectDB } from "@/util/database";
 import { ObjectId } from "mongodb";
 
@@ -7,7 +8,7 @@ export default async function Detail(props) {
     .collection("post")
     .findOne({ _id: new ObjectId(props.params.pageNum) });
 
-  console.log(props.params.pageNum);
+  // console.log(props.params.pageNum);
 
   return (
     <div>

@@ -1,3 +1,4 @@
+// @ : 경로 별칭 (jsconfig.json에서 설정)
 import { connectDB } from "@/util/database";
 
 export default async function Home() {
