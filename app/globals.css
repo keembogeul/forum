@@ -26,7 +26,7 @@ body {
   margin : 5px 0px;
 } 
 
-.title {
+a {
   text-decoration: none;
   color: black;
 }
@@ -47,4 +47,10 @@ button {
   background: lightgray;
   border: none;
   border-radius: 5px;
+  
 } 
+
+.edit {
+  margin-left: 10px;
+}
+
