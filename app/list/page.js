@@ -1,24 +1,19 @@
 // @ : 경로 별칭 (jsconfig.json에서 설정)
 import { connectDB } from "@/util/database";
-import Link from "next/link";
+import ListItem from "./ListItem";
 
 export default async function List() {
   const db = (await connectDB).db("forum");
   let result = await db.collection("post").find().toArray();
 
+  result = result.map((a) => {
+    a._id = a._id.toString();
+    return a;
+  });
+
   return (
     <div className="list-bg">
-      {result.map((a, i) => (
-        <div className="list-item" key={i}>
-          <Link href={`/detail/${a._id}`} className="title">
-            {a.title}
-          </Link>
-          <Link href={"/edit/" + a._id} className="edit">
-            🖌️
-          </Link>
-          <p>{a.content}</p>
-        </div>
-      ))}
+      <ListItem result={result} />
     </div>
   );
 }
