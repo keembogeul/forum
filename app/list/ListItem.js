@@ -29,15 +29,30 @@ useEffect(() => {}, [])
           </Link>
           {/* ajax 사용 -> fetch로 GET 요청 가능 (method 설정 가능) form 태그는 요청 시 항상 새로고침 - next.js는 가끔 아닐수도 */}
           <button
-            onClick={() => {
-              fetch("/api/post/delete", {
-                method: "POST",
-                body: result[i]._id,
-              }).then(() => {
-                console.log("게시글이 삭제되었습니다.");
+            className="delete"
+            onClick={(e) => {
+              // fetch("/api/post/delete", {
+              //   method: "POST",
+              //   body: result[i]._id,
+              // })
+              //   .then((r) => {
+              //     return r.json();
+              //   })
+              //   .then(() => {
+              //     // e = 유저가 방금 클릭한 요소
+              //     e.target.parentElement.style.opacity = 0;
+              //     setTimeout(() => {
+              //       e.target.parentElement.style.display = "none";
+              //     }, 1000);
+              //   });
+              fetch(`/api/test/${result[i]._id}`).then(() => {
+                // e = 유저가 방금 클릭한 요소
+                e.target.parentElement.style.opacity = 0;
+                setTimeout(() => {
+                  e.target.parentElement.style.display = "none";
+                }, 1000);
               });
             }}
-            className="delete"
           >
             🗑️
           </button>
