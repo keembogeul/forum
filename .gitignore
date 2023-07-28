@@ -37,3 +37,6 @@ next-env.d.ts
 database.js
 
 /.idea/
+
+/util/
+database.js
